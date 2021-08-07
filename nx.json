@@ -1,0 +1,38 @@
+{
+  "npmScope": "multi-encryptor-nx",
+  "affected": {
+    "defaultBase": "master"
+  },
+  "implicitDependencies": {
+    "package.json": {
+      "dependencies": "*",
+      "devDependencies": "*"
+    },
+    ".eslintrc.json": "*"
+  },
+  "tasksRunnerOptions": {
+    "default": {
+      "runner": "@nrwl/workspace/tasks-runners/default",
+      "options": {
+        "cacheableOperations": ["build", "lint", "test", "e2e"]
+      }
+    }
+  },
+  "targetDependencies": {
+    "build": [
+      {
+        "target": "build",
+        "projects": "dependencies"
+      }
+    ]
+  },
+  "projects": {
+    "multi-encryptor": {
+      "tags": []
+    },
+    "multi-encryptor-e2e": {
+      "tags": [],
+      "implicitDependencies": ["multi-encryptor"]
+    }
+  }
+}

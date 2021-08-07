@@ -18,13 +18,16 @@
             "tsConfig": "apps/multi-encryptor/tsconfig.app.json",
             "assets": [
               "apps/multi-encryptor/src/favicon.ico",
-              "apps/multi-encryptor/src/assets"
+              "apps/multi-encryptor/src/assets",
+              "apps/multi-encryptor/src/manifest.webmanifest"
             ],
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
               "apps/multi-encryptor/src/styles.css"
             ],
-            "scripts": []
+            "scripts": [],
+            "serviceWorker": true,
+            "ngswConfigPath": "apps/multi-encryptor/ngsw-config.json"
           },
           "configurations": {
             "production": {

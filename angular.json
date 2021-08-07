@@ -20,7 +20,10 @@
               "apps/multi-encryptor/src/favicon.ico",
               "apps/multi-encryptor/src/assets"
             ],
-            "styles": ["./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css", "apps/multi-encryptor/src/styles.css"],
+            "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
+              "apps/multi-encryptor/src/styles.css"
+            ],
             "scripts": []
           },
           "configurations": {
@@ -89,6 +92,13 @@
           "options": {
             "jestConfig": "apps/multi-encryptor/jest.config.js",
             "passWithNoTests": true
+          }
+        },
+        "stylelint": {
+          "builder": "nx-stylelint:lint",
+          "options": {
+            "config": "apps/multi-encryptor/.stylelintrc.json",
+            "lintFilePatterns": ["apps/multi-encryptor/**/*.css"]
           }
         }
       }

@@ -1,6 +1,38 @@
 {
   "version": 1,
   "projects": {
+    "ciphers": {
+      "root": "libs/ciphers",
+      "sourceRoot": "libs/ciphers/src",
+      "projectType": "library",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/node:package",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/libs/ciphers",
+            "tsConfig": "libs/ciphers/tsconfig.lib.json",
+            "packageJson": "libs/ciphers/package.json",
+            "main": "libs/ciphers/src/index.ts",
+            "assets": ["libs/ciphers/*.md"]
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/ciphers/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/ciphers"],
+          "options": {
+            "jestConfig": "libs/ciphers/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
     "multi-encryptor": {
       "projectType": "application",
       "root": "apps/multi-encryptor",

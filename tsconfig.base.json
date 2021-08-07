@@ -14,7 +14,9 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@lttr/ciphers": ["libs/ciphers/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

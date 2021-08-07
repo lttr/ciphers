@@ -28,6 +28,9 @@
     ]
   },
   "projects": {
+    "ciphers": {
+      "tags": []
+    },
     "multi-encryptor": {
       "tags": []
     },

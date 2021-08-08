@@ -1,6 +1,6 @@
 <mat-sidenav-container class="sidenav-container">
   <mat-sidenav
-    #drawer
+    #sidenav
     class="sidenav"
     fixedInViewport
     [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
@@ -9,10 +9,18 @@
   >
     <mat-toolbar>Menu</mat-toolbar>
     <mat-nav-list>
-      <a mat-list-item routerLink="/first-component" routerLinkActive="active"
+      <a
+        mat-list-item
+        routerLink="/first-component"
+        routerLinkActive="active"
+        (click)="closeIfHandset()"
         >Link 1</a
       >
-      <a mat-list-item routerLink="/second-component" routerLinkActive="active"
+      <a
+        mat-list-item
+        routerLink="/second-component"
+        routerLinkActive="active"
+        (click)="closeIfHandset()"
         >Link 2</a
       >
     </mat-nav-list>
@@ -23,7 +31,7 @@
         type="button"
         aria-label="Toggle sidenav"
         mat-icon-button
-        (click)="drawer.toggle()"
+        (click)="sidenav.toggle()"
         *ngIf="isHandset$ | async"
       >
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>

@@ -1,14 +1,20 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, ViewChild } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
+import { MatSidenav } from '@angular/material/sidenav';
 
 @Component({
   selector: 'me-navigation',
   templateUrl: './navigation.component.html',
   styleUrls: ['./navigation.component.css'],
 })
-export class NavigationComponent {
+export class NavigationComponent implements OnDestroy {
+  @ViewChild('sidenav') sidenav!: MatSidenav;
+
+  private isHandset = false;
+  private handsetSub: Subscription;
+
   isHandset$: Observable<boolean> = this.breakpointObserver
     .observe(Breakpoints.Handset)
     .pipe(
@@ -16,5 +22,19 @@ export class NavigationComponent {
       shareReplay()
     );
 
-  constructor(private breakpointObserver: BreakpointObserver) {}
+  closeIfHandset() {
+    if (this.isHandset) {
+      this.sidenav.close();
+    }
+  }
+
+  constructor(private breakpointObserver: BreakpointObserver) {
+    this.handsetSub = this.isHandset$.subscribe((x) => {
+      this.isHandset = x;
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.handsetSub.unsubscribe();
+  }
 }

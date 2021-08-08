@@ -21,7 +21,7 @@
           "error",
           {
             "type": "element",
-            "prefix": "multi-encryptor-nx",
+            "prefix": "me",
             "style": "kebab-case"
           }
         ]

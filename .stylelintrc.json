@@ -13,6 +13,7 @@
         "except": ["first-nested"],
         "severity": "warning"
       }
-    ]
+    ],
+    "no-empty-source": null
   }
 }

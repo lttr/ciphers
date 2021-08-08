@@ -1,15 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
-  selector: 'multi-encryptor-nx-second',
+  selector: 'me-second',
   templateUrl: './second.component.html',
-  styleUrls: ['./second.component.css']
+  styleUrls: ['./second.component.css'],
 })
-export class SecondComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
-}
+export class SecondComponent {}

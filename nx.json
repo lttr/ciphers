@@ -1,5 +1,5 @@
 {
-  "npmScope": "multi-encryptor-nx",
+  "npmScope": "ciphers",
   "affected": {
     "defaultBase": "master"
   },

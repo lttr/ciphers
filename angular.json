@@ -37,7 +37,7 @@
       "projectType": "application",
       "root": "apps/multi-encryptor",
       "sourceRoot": "apps/multi-encryptor/src",
-      "prefix": "multi-encryptor-nx",
+      "prefix": "me",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",

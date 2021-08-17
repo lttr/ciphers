@@ -1,21 +1,24 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { MatSliderModule } from '@angular/material/slider';
-
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NavigationComponent } from './navigation/navigation.component';
-import { LayoutModule } from '@angular/cdk/layout';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatButtonModule } from '@angular/material/button';
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatIconModule } from '@angular/material/icon';
-import { MatListModule } from '@angular/material/list';
-import { FirstComponent } from './first/first.component';
-import { SecondComponent } from './second/second.component';
-import { AppRoutingModule } from './app-routing.module';
-import { ServiceWorkerModule } from '@angular/service-worker';
-import { environment } from '../environments/environment';
+import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
+import { AppRoutingModule } from './app-routing.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { environment } from '../environments/environment';
+import { FirstComponent } from './first/first.component';
+import { LayoutModule } from '@angular/cdk/layout';
+import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatListModule } from '@angular/material/list';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { NavigationComponent } from './navigation/navigation.component';
+import { SecondComponent } from './second/second.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { CiphersFacade } from './services/ciphers.facade';
 
 @NgModule({
   declarations: [
@@ -27,9 +30,12 @@ import { AppComponent } from './app.component';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    MatSliderModule,
+    FormsModule,
     LayoutModule,
+    MatSliderModule,
+    MatInputModule,
     MatToolbarModule,
+    MatFormFieldModule,
     MatButtonModule,
     MatSidenavModule,
     MatIconModule,
@@ -42,7 +48,18 @@ import { AppComponent } from './app.component';
       registrationStrategy: 'registerWhenStable:30000',
     }),
   ],
-  providers: [],
+  exports: [
+    FormsModule,
+    MatSliderModule,
+    MatInputModule,
+    MatToolbarModule,
+    MatFormFieldModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatListModule,
+  ],
+  providers: [CiphersFacade],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

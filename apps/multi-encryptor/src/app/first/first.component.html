@@ -1,1 +1,20 @@
-<p>first {{ some }}!</p>
+<form>
+  <div>
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Input</mat-label>
+      <textarea [(ngModel)]="input" name="input" matInput></textarea>
+    </mat-form-field>
+    <mat-error>{{ error?.message }}</mat-error>
+  </div>
+
+  <div>
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Output</mat-label>
+      <textarea
+        [value]="encryptedText$ | async"
+        name="output"
+        matInput
+      ></textarea>
+    </mat-form-field>
+  </div>
+</form>

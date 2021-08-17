@@ -1,8 +1,9 @@
 import { UnexpectedInputError } from '../errors/unexpected-input-error';
 import { lowercase } from '../utils/lowercase';
 import { normalizeWhitespace } from '../utils/normalize-whitespace';
+import { AlphabetMap } from '../utils/types';
 
-const morseMap = {
+const morseMap: AlphabetMap = {
   a: '.-',
   b: '-...',
   c: '-.-.',
@@ -48,7 +49,7 @@ export function morse(text: string) {
   for (const char of input) {
     if (!char.match(/[A-Za-z0-9 .?!]/)) {
       throw new UnexpectedInputError(
-        'Only latin characters, numbers and spaces are allowed.'
+        'Only latin characters, numbers, spaces and end of sentence characters (.?!) are allowed.'
       );
     }
 

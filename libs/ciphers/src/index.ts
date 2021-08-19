@@ -3,6 +3,7 @@ export * from './lib/utils/alphabet';
 export * from './lib/utils/latinise';
 export * from './lib/utils/lowercase';
 export * from './lib/utils/normalize-whitespace';
+export * from './lib/utils/pipe';
 export * from './lib/utils/remove-diacritics';
 export * from './lib/utils/remove-non-word-characters';
 export * from './lib/utils/remove-whitespace';

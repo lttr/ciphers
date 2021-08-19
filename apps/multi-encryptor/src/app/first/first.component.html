@@ -1,5 +1,11 @@
 <form>
   <div>
+    <mat-checkbox [(ngModel)]="diacritics" name="diacritics">
+      Remove diacritics
+    </mat-checkbox>
+  </div>
+
+  <div>
     <mat-form-field class="example-full-width" appearance="fill">
       <mat-label>Input</mat-label>
       <textarea [(ngModel)]="input" name="input" matInput></textarea>

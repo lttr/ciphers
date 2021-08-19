@@ -11,6 +11,7 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatInputModule } from '@angular/material/input';
 import { MatListModule } from '@angular/material/list';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -39,6 +40,7 @@ import { CiphersFacade } from './services/ciphers.facade';
     MatButtonModule,
     MatSidenavModule,
     MatIconModule,
+    MatCheckboxModule,
     MatListModule,
     AppRoutingModule,
     ServiceWorkerModule.register('ngsw-worker.js', {

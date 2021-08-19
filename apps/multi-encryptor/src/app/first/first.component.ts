@@ -1,6 +1,6 @@
 import { Component, OnChanges, SimpleChanges } from '@angular/core';
-import { morse } from '@lttr/ciphers';
-import { Observable } from 'rxjs';
+import { morse, removeDiacritics, pipe } from '@lttr/ciphers';
+import { combineLatest, Observable } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { CiphersFacade } from '../services/ciphers.facade';
 
@@ -10,11 +10,19 @@ import { CiphersFacade } from '../services/ciphers.facade';
   styleUrls: ['./first.component.css'],
 })
 export class FirstComponent implements OnChanges {
-  encryptedText$: Observable<string>;
+  private _diacritics = true;
+  private _input = '';
 
+  encryptedText$: Observable<string>;
   error: Error | undefined;
 
-  private _input = '';
+  get diacritics() {
+    return this._diacritics;
+  }
+
+  set diacritics(value) {
+    this.ciphersFacade.removeDiacritics$.next(value);
+  }
 
   get input() {
     return this._input;
@@ -25,11 +33,34 @@ export class FirstComponent implements OnChanges {
   }
 
   constructor(private ciphersFacade: CiphersFacade) {
-    this.encryptedText$ = this.ciphersFacade.text$.pipe(
-      tap(() => {
+    this.encryptedText$ = combineLatest([
+      this.ciphersFacade.text$,
+      this.ciphersFacade.removeDiacritics$,
+    ]).pipe(
+      tap((data) => {
+        console.log(data);
         this.error = undefined;
       }),
-      map((text) => morse(text)),
+      map((data) => {
+        return {
+          text: data[0],
+          diacritics: data[1],
+        };
+      }),
+      map(({ text, diacritics }) => {
+        const functions = [];
+        if (diacritics) {
+          functions.push(removeDiacritics);
+        }
+        functions.push(morse);
+        let result = '';
+        try {
+          result = pipe(text, ...functions);
+        } catch (error) {
+          this.error = error;
+        }
+        return result;
+      }),
       catchError((error, caught) => {
         this.error = error;
         return caught;

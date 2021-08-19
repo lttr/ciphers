@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 
 @Injectable()
 export class CiphersFacade {
   text$ = new Subject<string>();
+  removeDiacritics$ = new BehaviorSubject<boolean>(true);
 }

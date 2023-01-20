@@ -31,7 +31,8 @@
             "passWithNoTests": true
           }
         }
-      }
+      },
+      "tags": []
     },
     "multi-encryptor": {
       "projectType": "application",
@@ -136,7 +137,8 @@
             "lintFilePatterns": ["apps/multi-encryptor/**/*.css"]
           }
         }
-      }
+      },
+      "tags": []
     },
     "multi-encryptor-e2e": {
       "root": "apps/multi-encryptor-e2e",
@@ -162,11 +164,10 @@
             "lintFilePatterns": ["apps/multi-encryptor-e2e/**/*.{js,ts}"]
           }
         }
-      }
+      },
+      "tags": [],
+      "implicitDependencies": ["multi-encryptor"]
     }
-  },
-  "cli": {
-    "defaultCollection": "@nrwl/angular"
   },
   "schematics": {
     "@nrwl/angular": {
@@ -194,6 +195,5 @@
     "@nrwl/angular:component": {
       "style": "css"
     }
-  },
-  "defaultProject": "multi-encryptor"
+  }
 }
